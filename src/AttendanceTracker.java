@@ -44,4 +44,12 @@ public class AttendanceTracker {
             System.out.println(name + ": " + count + " absences");
         }
     }
+
+    // Removes a student from the tracker
+    public void removeStudent(String name) {
+        if (!absences.containsKey(name)) {
+            throw new IllegalArgumentException("Student not found: " + name);
+        }
+        absences.remove(name);
+    }
 }

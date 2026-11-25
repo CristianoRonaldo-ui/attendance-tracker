@@ -10,5 +10,7 @@ public class AttendanceApp {
         tracker.markAbsent("Bob");
 
         tracker.printReport();
+        tracker.removeStudent("Bob");
+        tracker.printReport();
     }
 }
