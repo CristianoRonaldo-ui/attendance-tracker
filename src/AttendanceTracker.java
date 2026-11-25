@@ -1,13 +1,13 @@
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.TreeMap;
 import java.util.Map;
 
 public class AttendanceTracker {
-    // Maps each student's name to their number of absences
-    private HashMap<String, Integer> absences;
+    // Maps each student's name to their number of absences, sorted by name
+    private Map<String, Integer> absences;
 
     public AttendanceTracker() {
-        absences = new HashMap<>();
+        absences = new TreeMap<>();
     }
 
     // Adds a new student with 0 absences
