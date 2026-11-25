@@ -1,4 +1,6 @@
 import java.util.HashMap;
+import java.util.HashMap;
+import java.util.Map;
 
 public class AttendanceTracker {
     // Maps each student's name to their number of absences
@@ -31,5 +33,15 @@ public class AttendanceTracker {
             throw new IllegalArgumentException("Student not found: " + name);
         }
         return absences.get(name);
+    }
+
+    // Prints every student and their absence count
+    public void printReport() {
+        System.out.println("=== Attendance Report ===");
+        for (Map.Entry<String, Integer> entry : absences.entrySet()) {
+            String name = entry.getKey();
+            int count = entry.getValue();
+            System.out.println(name + ": " + count + " absences");
+        }
     }
 }

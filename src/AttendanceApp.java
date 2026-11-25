@@ -9,7 +9,6 @@ public class AttendanceApp {
         tracker.markAbsent("Alice");
         tracker.markAbsent("Bob");
 
-        System.out.println("Alice: " + tracker.getAbsences("Alice") + " absences");
-        System.out.println("Bob: " + tracker.getAbsences("Bob") + " absences");
+        tracker.printReport();
     }
 }
