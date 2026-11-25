@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class AttendanceApp {
     public static void main(String[] args) {
         AttendanceTracker tracker = new AttendanceTracker();
@@ -10,6 +12,7 @@ public class AttendanceApp {
         tracker.markAbsent("Bob");
 
         tracker.printReport();
+        System.out.println("At risk (2+ absences): " + tracker.getStudentsAtRisk(2));
         tracker.removeStudent("Bob");
         tracker.printReport();
         runTests();
@@ -49,6 +52,20 @@ public class AttendanceApp {
             System.out.println("Test 3 FAIL: removed student still found");
         } catch (IllegalArgumentException e) {
             System.out.println("Test 3 PASS: " + e.getMessage());
+        }
+        // Test 4: getStudentsAtRisk returns only students at or above the threshold
+        AttendanceTracker t4 = new AttendanceTracker();
+        t4.addStudent("Dana");
+        t4.addStudent("Evan");
+        t4.markAbsent("Dana");
+        t4.markAbsent("Dana");
+        t4.markAbsent("Dana");
+        t4.markAbsent("Evan");
+        ArrayList<String> atRisk = t4.getStudentsAtRisk(3);
+        if (atRisk.size() == 1 && atRisk.contains("Dana")) {
+            System.out.println("Test 4 PASS: only Dana is at risk");
+        } else {
+            System.out.println("Test 4 FAIL: expected [Dana], got " + atRisk);
         }
     }
 }

@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -50,5 +51,16 @@ public class AttendanceTracker {
             throw new IllegalArgumentException("Student not found: " + name);
         }
         absences.remove(name);
+    }
+
+    // Returns names of students with at least `threshold` absences
+    public ArrayList<String> getStudentsAtRisk(int threshold) {
+        ArrayList<String> atRisk = new ArrayList<>();
+        for (Map.Entry<String, Integer> entry : absences.entrySet()) {
+            if (entry.getValue() >= threshold) {
+                atRisk.add(entry.getKey());
+            }
+        }
+        return atRisk;
     }
 }
